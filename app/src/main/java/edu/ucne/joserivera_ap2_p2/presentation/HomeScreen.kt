@@ -44,7 +44,7 @@ fun HomeScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.mundo),
+                painter = painterResource(id = R.drawable.respo),
                 contentDescription = "Logo de la App",
                 modifier = Modifier.size(40.dp)
             )
@@ -68,7 +68,7 @@ fun HomeScreen(
 
             OptionCard(
                 title = "Repositorios",
-                imageResId = R.drawable.carro, // Usa un ícono relacionado
+                imageResId = R.drawable.th,
                 onClick = goToRepository
             )
         }
