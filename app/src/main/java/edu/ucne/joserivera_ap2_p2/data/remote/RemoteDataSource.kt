@@ -1,3 +1,4 @@
+// RemoteDataSource.kt
 package edu.ucne.joserivera_ap2_p2.data.remote
 
 import edu.ucne.joserivera_ap2_p2.data.remote.dto.RepositoryDto
@@ -7,6 +8,6 @@ class RemoteDataSource @Inject constructor(
     private val gitHubApi: GitHubApi
 ) {
     suspend fun getRepositories(username: String): List<RepositoryDto> {
-        return gitHubApi.listRepos(username)
+        return gitHubApi.getRepositories(username)
     }
 }
