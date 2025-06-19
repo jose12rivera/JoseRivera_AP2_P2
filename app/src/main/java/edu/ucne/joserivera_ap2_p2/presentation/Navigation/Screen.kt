@@ -6,9 +6,13 @@ sealed class Screen {
     @Serializable
     data object HomeScreen : Screen()
     @Serializable
-    data object RepositoryList : Screen()
+    data class RepositoryList(val username: String) : Screen()
 
     @Serializable
-    data class RepositoryDetail(val id: Int) : Screen()
+    data class RepositoryDetail(
+        val name: String,
+        val desc: String?,
+        val url: String
+    ) : Screen()
 
 }
