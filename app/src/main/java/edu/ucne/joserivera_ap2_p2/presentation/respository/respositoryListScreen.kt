@@ -1,5 +1,6 @@
 package edu.ucne.joserivera_ap2_p2.presentation.respository
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,6 +12,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -51,16 +53,22 @@ fun RepositoryListBodyScreen(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             MediumTopAppBar(
-                title = { Text("Listas De Repository") },
+                title = { Text("Listas De Repository", color = Color.White) },
                 navigationIcon = {
                     IconButton(onClick = onDrawer) {
-                        Icon(Icons.Default.Menu, contentDescription = "Abrir menú")
+                        Icon(Icons.Default.Menu, contentDescription = "Abrir menú", tint = Color.White)
                     }
-                }
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = Color(0xFF0D47A1)
+                )
             )
+
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = onRefresh) {
+            FloatingActionButton(
+                onClick = onRefresh
+                , containerColor = Color(0xFFCCC2DC) ){
                 Icon(Icons.Default.Refresh, contentDescription = "Refrescar")
             }
         }
@@ -68,6 +76,7 @@ fun RepositoryListBodyScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
+                .background(Color(0xFF0D47A1))
                 .padding(innerPadding)
         ) {
             Spacer(modifier = Modifier.height(32.dp))
@@ -84,7 +93,7 @@ fun RepositoryListBodyScreen(
                 )
             }
 
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
+            LazyColumn(modifier = Modifier.fillMaxSize().background(Color(0xFF0D47A1))) {
                 items(uiState.repositories) { repo ->
                     RepositoryRow(repo, goToRepository)
                 }
@@ -104,9 +113,10 @@ private fun RepositoryRow(
             .clickable { goToRepository(item) }
             .padding(16.dp)
     ) {
-        Text(text = "Nombre: ${item.name}")
-        Text(text = "Descripción: ${item.description ?: "Sin descripción"}")
-        Text(text = "URL: ${item.htmlUrl}")
+        Text(text = "Nombre: ${item.name}", color = Color.White)
+        Text(text = "Descripción: ${item.description ?: "Sin descripción"}", color = Color.White)
+        Text(text = "URL: ${item.htmlUrl}", color = Color.White)
     }
-    Divider()
+    Divider(color = Color.White.copy(alpha = 0.3f))
 }
+
