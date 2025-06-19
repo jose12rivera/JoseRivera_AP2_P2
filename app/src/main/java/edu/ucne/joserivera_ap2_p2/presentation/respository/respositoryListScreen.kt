@@ -18,7 +18,7 @@ import edu.ucne.joserivera_ap2_p2.data.remote.dto.RepositoryDto
 
 @Composable
 fun RepositoryListScreen(
-    username: String,
+    username: String = "enelramon",
     viewModel: RepositoryViewModel = hiltViewModel(),
     goToRepository: (RepositoryDto) -> Unit,
     onDrawer: () -> Unit
@@ -51,7 +51,7 @@ fun RepositoryListBodyScreen(
         modifier = Modifier.fillMaxSize(),
         topBar = {
             MediumTopAppBar(
-                title = { Text("Repository de $username") },
+                title = { Text("Listas De Repository") },
                 navigationIcon = {
                     IconButton(onClick = onDrawer) {
                         Icon(Icons.Default.Menu, contentDescription = "Abrir menú")
