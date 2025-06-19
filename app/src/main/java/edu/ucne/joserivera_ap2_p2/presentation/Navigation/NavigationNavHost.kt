@@ -19,7 +19,7 @@ fun AppNavigation(navController: NavHostController, viewModel: RepositoryViewMod
         composable<Screen.HomeScreen> {
             HomeScreen(
                 goToRepository = {
-                    navController.navigate(Screen.RepositoryList("joserivera"))
+                    navController.navigate(Screen.RepositoryList("enelramon"))
                 }
             )
         }
