@@ -49,6 +49,12 @@ fun RepositoryListBodyScreen(
     onDrawer: () -> Unit,
     onRefresh: () -> Unit,
 ) {
+    var query by remember { mutableStateOf("") }
+
+    val filteredRepositories = uiState.repositories.filter { repo ->
+        query.isBlank() || repo.name.contains(query, ignoreCase = true)
+    }
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
@@ -63,12 +69,12 @@ fun RepositoryListBodyScreen(
                     containerColor = Color(0xFF0D47A1)
                 )
             )
-
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = onRefresh
-                , containerColor = Color(0xFFCCC2DC) ){
+                onClick = onRefresh,
+                containerColor = Color(0xFFCCC2DC)
+            ) {
                 Icon(Icons.Default.Refresh, contentDescription = "Refrescar")
             }
         }
@@ -79,7 +85,28 @@ fun RepositoryListBodyScreen(
                 .background(Color(0xFF0D47A1))
                 .padding(innerPadding)
         ) {
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Barra de búsqueda
+            OutlinedTextField(
+                value = query,
+                onValueChange = { query = it },
+                label = { Text("Buscar repositorio") },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = Color.White,
+                    unfocusedTextColor = Color.White,
+                    focusedContainerColor = Color(0xFF1565C0),
+                    unfocusedContainerColor = Color(0xFF1565C0),
+                    focusedBorderColor = Color.White,
+                    unfocusedBorderColor = Color.White,
+                    cursorColor = Color.White
+                )
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
 
             if (uiState.isLoading) {
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
@@ -94,13 +121,14 @@ fun RepositoryListBodyScreen(
             }
 
             LazyColumn(modifier = Modifier.fillMaxSize().background(Color(0xFF0D47A1))) {
-                items(uiState.repositories) { repo ->
+                items(filteredRepositories) { repo ->
                     RepositoryRow(repo, goToRepository)
                 }
             }
         }
     }
 }
+
 
 @Composable
 private fun RepositoryRow(
