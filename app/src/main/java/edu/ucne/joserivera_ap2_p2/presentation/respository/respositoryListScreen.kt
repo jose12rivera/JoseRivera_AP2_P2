@@ -20,9 +20,9 @@ import edu.ucne.joserivera_ap2_p2.data.remote.dto.RepositoryDto
 
 @Composable
 fun RepositoryListScreen(
-    username: String = "enelramon",
+    username: String = "jose12rivera",
     viewModel: RepositoryViewModel = hiltViewModel(),
-    goToRepository: (RepositoryDto) -> Unit,
+    onRepositorySelected: (RepositoryDto) -> Unit,
     onDrawer: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
@@ -34,7 +34,7 @@ fun RepositoryListScreen(
     RepositoryListBodyScreen(
         uiState = uiState,
         username = username,
-        goToRepository = goToRepository,
+        onRepositorySelected = onRepositorySelected,
         onDrawer = onDrawer,
         onRefresh = { viewModel.fetchRepositories(username) }
     )
@@ -45,7 +45,7 @@ fun RepositoryListScreen(
 fun RepositoryListBodyScreen(
     uiState: RepositoryUiState,
     username: String,
-    goToRepository: (RepositoryDto) -> Unit,
+    onRepositorySelected: (RepositoryDto) -> Unit,
     onDrawer: () -> Unit,
     onRefresh: () -> Unit,
 ) {
@@ -122,7 +122,9 @@ fun RepositoryListBodyScreen(
 
             LazyColumn(modifier = Modifier.fillMaxSize().background(Color(0xFF0D47A1))) {
                 items(filteredRepositories) { repo ->
-                    RepositoryRow(repo, goToRepository)
+                    RepositoryRow(repo) {
+                        onRepositorySelected(repo)
+                    }
                 }
             }
         }
@@ -133,12 +135,12 @@ fun RepositoryListBodyScreen(
 @Composable
 private fun RepositoryRow(
     item: RepositoryDto,
-    goToRepository: (RepositoryDto) -> Unit
+    onClick: () -> Unit
 ) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { goToRepository(item) }
+            .clickable { onClick() }
             .padding(16.dp)
     ) {
         Text(text = "Nombre: ${item.name}", color = Color.White)
