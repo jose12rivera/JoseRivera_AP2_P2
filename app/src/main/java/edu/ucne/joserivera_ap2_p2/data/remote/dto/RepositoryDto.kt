@@ -7,5 +7,5 @@ data class RepositoryDto(
     @Json(name = "name") val name: String,
     @Json(name = "description") val description: String?,
     @Json(name = "html_url") val htmlUrl: String,
-    @Transient var isLocal: Boolean = false // Ignorar en la serialización
+    @Transient var isLocal: Boolean = false
 )
