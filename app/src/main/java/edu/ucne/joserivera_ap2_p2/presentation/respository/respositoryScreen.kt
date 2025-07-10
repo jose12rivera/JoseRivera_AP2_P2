@@ -32,7 +32,7 @@ fun RepositoryScreen(
     navController: NavHostController,
     viewModel: RepositoryViewModel = hiltViewModel()
 ) {
-    // Carga inicial con los datos recibidos
+
     LaunchedEffect(Unit) {
         viewModel.setName(repository.name)
         viewModel.setDescription(repository.description)
