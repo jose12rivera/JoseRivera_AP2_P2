@@ -7,7 +7,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import edu.ucne.joserivera_ap2_p2.data.remote.dto.RepositoryDto
 import edu.ucne.joserivera_ap2_p2.presentation.HomeScreen
-import edu.ucne.joserivera_ap2_p2.presentation.Navigation.Screen
 import edu.ucne.joserivera_ap2_p2.presentation.contribuidor.ContribuidorScreen
 import edu.ucne.joserivera_ap2_p2.presentation.respository.RepositoryListScreen
 import edu.ucne.joserivera_ap2_p2.presentation.respository.RepositoryScreen
@@ -27,7 +26,7 @@ fun AppNavigation(
             HomeScreen(
                 goToRepository = {
                     navController.navigate(
-                        Screen.RepositoryList(username = "jose12rivera")
+                        Screen.RepositoryList(username = "enelramon") // <-- cambiado aquí
                     )
                 }
             )
@@ -56,7 +55,6 @@ fun AppNavigation(
         // Pantalla de detalle de repositorio
         composable<Screen.ViewRepository> {
             val args = it.toRoute<Screen.ViewRepository>()
-
             RepositoryScreen(
                 repository = RepositoryDto(
                     name = args.name,
@@ -64,7 +62,6 @@ fun AppNavigation(
                     htmlUrl = args.url
                 ),
                 navController = navController,
-
             )
         }
 
