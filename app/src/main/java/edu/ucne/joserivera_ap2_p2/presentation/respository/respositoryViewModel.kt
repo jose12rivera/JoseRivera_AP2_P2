@@ -22,8 +22,9 @@ class RepositoryViewModel @Inject constructor(
     val uiState = _uiState.asStateFlow()
 
     init {
-        fetchRepositories("jose12rivera") // Puedes cambiar el username si lo deseas
+        fetchRepositories("enelramon") // <--- CAMBIADO AQUI TAMBIÉN
     }
+
 
     fun fetchRepositories(username: String) {
         viewModelScope.launch {
