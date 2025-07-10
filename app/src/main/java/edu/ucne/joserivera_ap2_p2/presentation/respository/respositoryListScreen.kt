@@ -20,11 +20,12 @@ import edu.ucne.joserivera_ap2_p2.data.remote.dto.RepositoryDto
 
 @Composable
 fun RepositoryListScreen(
-    username: String = "jose12rivera",
+    username: String = "enelramon",
     viewModel: RepositoryViewModel = hiltViewModel(),
     onRepositorySelected: (RepositoryDto) -> Unit,
     onDrawer: () -> Unit
-) {
+)
+{
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     LaunchedEffect(username) {
