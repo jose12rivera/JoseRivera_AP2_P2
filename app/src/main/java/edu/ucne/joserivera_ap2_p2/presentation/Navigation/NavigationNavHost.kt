@@ -26,7 +26,7 @@ fun AppNavigation(
             HomeScreen(
                 goToRepository = {
                     navController.navigate(
-                        Screen.RepositoryList(username = "enelramon") // <-- cambiado aquí
+                        Screen.RepositoryList(username = "enelramon")
                     )
                 }
             )
