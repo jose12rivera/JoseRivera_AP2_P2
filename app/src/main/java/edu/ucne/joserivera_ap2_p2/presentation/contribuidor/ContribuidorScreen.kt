@@ -56,16 +56,16 @@ fun ContribuidorScreen(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color(0xFF4A148C)
+                    containerColor = Color(0xFF0D47A1)
                 )
             )
         },
-        containerColor = Color(0xFFEDE7F6)
+        containerColor = Color(0xFF0D47A1)
     ) { paddingValues ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFEDE7F6))
+                .background(Color(0xFF0D47A1))
                 .padding(paddingValues)
         ) {
             Column(
@@ -79,7 +79,7 @@ fun ContribuidorScreen(
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                            CircularProgressIndicator(color = Color(0xFF4A148C))
+                            CircularProgressIndicator(color = Color.White)
                         }
                     }
                     state.errorMessage != null -> {
@@ -102,7 +102,7 @@ fun ContribuidorScreen(
                             Text(
                                 text = "No hay contribuidores.",
                                 fontSize = 16.sp,
-                                color = Color(0xFF4A148C)
+                                color = Color.White
                             )
                         }
                     }
@@ -133,7 +133,7 @@ fun ContribuidorScreen(
                             .clickable { selectedImageUrl = null },
                         contentAlignment = Alignment.Center
                     ) {
-                        // Puedes añadir aquí una imagen cargada con Coil o similar
+
                     }
                 }
             }
@@ -163,12 +163,12 @@ fun ContributorRow(
                     text = contributor.login,
                     fontWeight = FontWeight.Bold,
                     fontSize = 17.sp,
-                    color = Color(0xFF4A148C)
+                    color = Color(0xFF2E7D32)
                 )
                 Text(
                     text = "Contribuciones: ${contributor.contributions}",
                     fontSize = 15.sp,
-                    color = Color(0xFF7B1FA2)
+                    color = Color(0xFF66BB6A)
                 )
             }
         }
