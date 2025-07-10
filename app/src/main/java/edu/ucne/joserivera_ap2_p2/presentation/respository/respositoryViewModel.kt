@@ -22,7 +22,7 @@ class RepositoryViewModel @Inject constructor(
     val uiState = _uiState.asStateFlow()
 
     init {
-        fetchRepositories("enelramon") // <--- CAMBIADO AQUI TAMBIÉN
+        fetchRepositories("enelramon")
     }
 
 
