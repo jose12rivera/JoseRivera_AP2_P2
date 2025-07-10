@@ -1,12 +1,14 @@
-package edu.ucne.joserivera_ap2_p2.presentation.Navigation
+package edu.ucne.joserivera_ap2_p2.presentation.navigation
 
 import kotlinx.serialization.Serializable
 
 sealed class Screen {
     @Serializable
     data object HomeScreen : Screen()
+
     @Serializable
     data class ContributorList(val owner: String, val repoName: String) : Screen()
+
     @Serializable
     data class RepositoryList(val username: String) : Screen()
 
